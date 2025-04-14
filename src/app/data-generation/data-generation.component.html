@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Data Generation</mat-card-title>
+      <mat-card-subtitle>Generate student records in Excel format</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div>
+        <form [formGroup]="dataForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Number of Records</mat-label>
+            <input matInput type="number" formControlName="recordCount" min="0" max="1000000">
+            <mat-error *ngIf="dataForm.get('recordCount')?.hasError('min')">
+              Minimum value is 0
+            </mat-error>
+            <mat-error *ngIf="dataForm.get('recordCount')?.hasError('max')">
+              Maximum value is 1,000,000
+            </mat-error>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" (click)="generateData()" 
+                  [disabled]="!dataForm.valid || isGenerating">
+            <span *ngIf="!isGenerating">Generate Data</span>
+            <span *ngIf="isGenerating">Generating...</span> <!-- Fixed spelling -->
+          </button>
+        </form>
+  
+        <div *ngIf="generationResult" class="result-message">
+          <mat-icon [color]="generationResult.success ? 'primary' : 'warn'">
+            {{ generationResult.success ? 'check_circle' : 'error' }}
+          </mat-icon>
+          <span>{{ generationResult.message }}</span>
+          <a *ngIf="generationResult.filePath" mat-button 
+             [href]="generationResult.filePath" target="_blank">
+            Download File
+          </a>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>

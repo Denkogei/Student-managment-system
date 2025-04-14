@@ -1,0 +1,36 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+    
+    <a mat-list-item routerLink="/data-generation" routerLinkActive="active">
+      <mat-icon>data_usage</mat-icon>
+      <span>Data Generation</span>
+    </a>
+    
+    <a mat-list-item routerLink="/data-processing" routerLinkActive="active">
+      <mat-icon>transform</mat-icon>
+      <span>Data Processing</span>
+    </a>
+    
+    <a mat-list-item routerLink="/file-upload" routerLinkActive="active">
+      <mat-icon>cloud_upload</mat-icon>
+      <span>File Upload</span>
+    </a>
+    
+    <a mat-list-item routerLink="/student-management" routerLinkActive="active">
+      <mat-icon>people</mat-icon>
+      <span>Student Management</span>
+    </a>
+    
+    <a mat-list-item routerLink="/student-report" routerLinkActive="active">
+      <mat-icon>assessment</mat-icon>
+      <span>Student Report</span>
+    </a>
+    
+    <a mat-list-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </a>
+  </mat-nav-list>
